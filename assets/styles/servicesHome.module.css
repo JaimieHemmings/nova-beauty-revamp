@@ -1,0 +1,59 @@
+.services {
+    padding: 25px 0;
+  }
+  
+  .services .container {
+    max-width: 1078px;
+    margin: 0 auto;
+  }
+  
+  .services .container .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .services .container .row a {
+    flex: 0 0 24%;
+    position: relative;
+    margin-bottom: 1%;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  
+  .services .container .row a img {
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    display: block;
+    transition: 0.5s ease;
+  }
+  
+  .services .container .row a:hover img {
+    transform: scale(1.2,1.2);
+    filter: grayscale(1);
+  }
+  
+  .services h2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 15px;
+    margin: 0;
+    color: #fff;
+  }
+  
+  @media screen and (max-width: 568px) {
+    .services {
+      padding: 15px 0;
+    }
+  
+    .services .container .row a {
+      flex: 0 0 49%;
+      margin-bottom: 3%;
+    }
+  
+    .services .container .row h2 {
+      font-size: 24px;
+    }
+  }

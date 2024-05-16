@@ -3,31 +3,61 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --primary-color: #ffb8ea;
+  --secondary-color: #aa5ef2;
+  --dark: #73666f;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--dark);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.bg-dark {
+  background-color: var(--dark);
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.bg-secondary {
+  background-color: var(--secondary-color);
+}
+
+.bg-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bg-image-right {
+  background-position: center right;
+}
+
+.dark-overlay {
+  position: relative;
+}
+
+.dark-overlay > * {
+  position: relative;
+  z-index: 2;
+}
+
+.dark-overlay:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  background-color: #111;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 568px) {
+  .bg-image-right {
+    background-position: center 100%;
   }
 }
