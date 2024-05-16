@@ -1,0 +1,23 @@
+.testimonialHead {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.testimonialHead img {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    margin-top: 15px;
+}
+
+.testimonialHead h2 {
+    font-weight: 700;
+    font-size: 22px;
+    padding: 15px 0 15px 15px;
+}
+
+.container {
+    max-width: 1078px;
+    margin: 0 auto;
+}

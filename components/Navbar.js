@@ -1,15 +1,17 @@
 'use client';
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from 'next/navigation'
+import profileIMG from '../assets/profile.png'
 
 export default function Navbar() {
 
-    //Toggle profile menu
+    //Toggle menus
     const [isProfileMenuActive, setIsProfileMenuActive] = useState(false);
-    const ToggleMenuProfile = () => {
-        setIsProfileMenuActive(!isProfileMenuActive);
-    };
+    const [isMobileMenuActive, setIsMobileMenuActive] = useState(false);
+    const ToggleMenuProfile = () => { setIsProfileMenuActive(!isProfileMenuActive) };
+    const ToggleMenuMobile = () => { setIsMobileMenuActive(!isMobileMenuActive) };
 
     const pathname = usePathname();
 
@@ -19,7 +21,7 @@ export default function Navbar() {
             <div className="relative flex h-16 items-center justify-between">
 
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                    <button type="button" className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                    <button onClick={ToggleMenuMobile} type="button" className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
                         <span className="absolute -inset-0.5"></span>
                         <span className="sr-only">Open main menu</span>
             
@@ -40,15 +42,15 @@ export default function Navbar() {
                     <div className="hidden sm:ml-6 sm:block">
                         <div className="flex space-x-4">
                             <Link href="/about"
-                            className={ `${pathname === '/about' ? 'bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}` }aria-current="page">
+                            className={ `${pathname === '/about' ? 'bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}` }>
                                 About
                             </Link>
                             <Link href="/services"
-                            className={ `${pathname === '/services' ? 'bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}` }aria-current="page">
+                            className={ `${pathname === '/services' ? 'bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}` }>
                                 Services
                             </Link>
                             <Link href="/contact"
-                            className={ `${pathname === '/contact' ? 'bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}` }aria-current="page">
+                            className={ `${pathname === '/contact' ? 'bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}` }>
                                 Contact
                             </Link>
                         </div>
@@ -69,7 +71,11 @@ export default function Navbar() {
                             <button onClick={ToggleMenuProfile} type="button" className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                 <span className="absolute -inset-1.5"></span>
                                 <span className="sr-only">Open user menu</span>
-                                <p>img</p>
+                                <Image
+                                    src={profileIMG}
+                                    width={31}
+                                    height={31}
+                                />
                             </button>
                         </div>
                         { isProfileMenuActive && (
@@ -93,23 +99,40 @@ export default function Navbar() {
                             aria-orientation="vertical"
                             aria-labelledby="user-menu-button"
                             tabindex="-1">
-                                <Link href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Admin</Link>
-                                <Link href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Profile</Link>
-                                <Link href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</Link>
+                                <Link onClick={ToggleMenuProfile} href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Admin</Link>
+                                <Link onClick={ToggleMenuProfile} href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Profile</Link>
+                                <Link onClick={ToggleMenuProfile} href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</Link>
                             </div>
                         )}
                     </div>
                 </div>
             </div>
         </div>
-
-        <div className="sm:hidden" id="mobile-menu">
-            <div className="space-y-1 px-2 pb-3 pt-2">
-                <a href="#" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">About</a>
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Services</a>
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact</a>
+        { isMobileMenuActive && (
+            <div className="sm:hidden" id="mobile-menu">
+                <div className="space-y-1 px-2 pb-3 pt-2">
+                    <Link
+                    onClick={ToggleMenuMobile}
+                    href="/about"
+                    className={ `${pathname === '/about' ? "bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"}` }
+                    >
+                        About
+                    </Link>
+                    <Link
+                    onClick={ToggleMenuMobile}
+                    href="/services"
+                    className={ `${pathname === '/services' ? "bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"}` }>
+                        Services
+                    </Link>
+                    <Link
+                    onClick={ToggleMenuMobile}
+                    href="/contact"
+                    className={ `${pathname === '/contact' ? "bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"}` }>
+                        Contact
+                    </Link>
+                </div>
             </div>
-        </div>
+        )}
     </nav>
   );
 };
