@@ -61,3 +61,28 @@ body {
     background-position: center 100%;
   }
 }
+
+.text-highlight {
+  color: #aa5ef2;
+}
+
+.bg-highlight {
+  background-color: #aa5ef2;
+  border: none;
+}
+
+.bg-highlight:hover {
+  background-color: #fff;
+  color: #aa5ef2;
+}
+
+.bg-highlight-alt {
+  background-color: #fff;
+  color: #aa5ef2;
+  border: none;
+}
+
+.bg-highlight-alt:hover {
+  background-color: #aa5ef2;
+  color: #fff;
+}
