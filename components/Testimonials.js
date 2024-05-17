@@ -5,7 +5,7 @@ import styles from '../assets/styles/testimonials.module.css'
 export default function Testimonials () {
     return (
         
-<section className={styles.container}>
+<section className="container mx-auto">
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-8 mx-auto sm:py-16 lg-px6 max-w-screen-xl">
         <div className="grid gap-4">
             <div className="bg-white rounded py-2 px-2">

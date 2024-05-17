@@ -1,8 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
 
-import Styles from '../assets/styles/servicesHome.module.css'
-
 import Nails from '../assets/panels/nails.avif'
 import Massage from '../assets/panels/massage.avif'
 import Microdermabrasion from '../assets/panels/healthcare.avif'
@@ -16,9 +14,9 @@ import Brows from '../assets/panels/makeup.avif'
 
 export default function ServicesHome() {
     return (
-        <section className={Styles.services}>
-            <div className={Styles.container}>
-                <div className={Styles.row}>
+        <section className="services">
+            <div className="container mx-auto">
+                <div className="row">
                     <Link href="/services">
                         <Image src={Nails} alt="" width={400} height={400} />
                         <h2>Nails</h2>

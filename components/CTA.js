@@ -8,7 +8,7 @@ var heroBG = {
 export default function CTA() {
     return (
         <section className="dark:bg-gray-900 dark-overlay bg-image" style={heroBG}>
-            <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+            <div className="container py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
                 <div className="max-w-screen-md">
                     <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Elevated Healing with Oncology Massage</h2>
                     <p className="mb-8 text-white font-light sm:text-xl">Discover the transformative power of Oncology Massage—a specialized therapeutic touch designed to support cancer patients through every stage of their journey. At Nova Beauty, we understand the unique challenges that come with a cancer diagnosis, and our compassionate, highly-trained therapists are here to offer relief, comfort, and a sense of well-being.</p>
