@@ -1,70 +1,182 @@
-export default function Services() {
+import ConnectDB from "@/config/database"
+import ServicesList from "@/models/Services"
+
+const ServicesPage = async () => {
+    await ConnectDB();
+    const Service = await ServicesList.find({}).lean();
     return (
-        <section class="feature__section container mx-auto">
-            <div class="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
-                <div class="flex flex-col gap-y-3">
-                <h2 class="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Nail Treatments</h2>
-                <p class="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+        <section className="feature__section container mx-auto">
+            <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
+                <div className="flex flex-col gap-y-3">
+                    <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Nail Treatments</h2>
+                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
                 </div>
-                <div class="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div
-                    class="grid grid-rows-1 p-5 bg-white rounded-xl gap-y-2 w-full border border-slate-500/50 hover:shadow-[5px_5px_0_rgba(0,0,0,0.5)] transition-shadow duration-150 ease-linear cursor-pointer">
-                    <div class="flex flex-col gap-y-2.5">
-                    <h3 class="text-lg font-semibold">Pedicure</h3>
-                    <p class="text-xl font-semibold">£22</p>
-                    </div>
-                    <p class="text-slate-700/70 text-base">Some information about the service</p>
-                </div>
-                <div
-                    class="grid grid-rows-1 p-5 bg-white rounded-xl gap-y-2 w-full border border-slate-500/50 hover:shadow-[5px_5px_0_rgba(0,0,0,0.5)] transition-shadow duration-150 ease-linear cursor-pointer">
-                    <div class="flex flex-col gap-y-2.5">
-                    <h3 class="text-lg font-semibold">Luxury Pedicure</h3>
-                    <p class="text-xl font-semibold">£30</p>
-                    </div>
-                    <p class="text-slate-700/70 text-base">Some information about the service</p>
-                </div>
-                <div
-                    class="grid grid-rows-1 p-5 bg-white rounded-xl gap-y-2 w-full border border-slate-500/50 hover:shadow-[5px_5px_0_rgba(0,0,0,0.5)] transition-shadow duration-150 ease-linear cursor-pointer">
-                    <div class="flex flex-col gap-y-2.5">
-                    <h3 class="text-lg font-semibold">Nail Polish</h3>
-                    <p class="text-xl font-semibold">£25</p>
-                    </div>
-                    <p class="text-slate-700/70 text-base">Some information about the service</p>
-                </div>
+                <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    { Service.map((serviceItem) => (
+                        serviceItem.type === "Nails" ? (
+                            <div key={serviceItem._id}
+                                className="grid grid-rows-1 p-5 bg-white rounded-xl gap-y-2 w-full border border-slate-500/50 ">
+                                <div className="flex flex-col gap-y-2.5">
+                                <h3 className="text-lg font-semibold">{serviceItem.name}</h3>
+                                <p className="text-xl font-semibold">£{serviceItem.price}</p>
+                                </div>
+                                <p className="text-slate-700/70 text-base">{serviceItem.description}</p>
+                            </div>
+                        ) : ("")
+                    ))}
                 </div>
             </div>
-            <div class="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
-                <div class="flex flex-col gap-y-3">
-                <h2 class="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Massage Treatments</h2>
-                <p class="md:max-w-lg text-white">Embark on a journey of relaxation and rejuvenation with our exquisite range of massage services tailored to soothe your body, mind, and soul. At our sanctuary of serenity, we offer a blissful escape from the stresses of daily life.</p>
+            
+            <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
+                <div className="flex flex-col gap-y-3">
+                    <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Massage Treatments</h2>
+                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
                 </div>
-                <div class="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div
-                    class="grid grid-rows-1 p-5 bg-white rounded-xl gap-y-2 w-full border border-slate-500/50 hover:shadow-[5px_5px_0_rgba(0,0,0,0.5)] transition-shadow duration-150 ease-linear cursor-pointer">
-                    <div class="flex flex-col gap-y-2.5">
-                    <h3 class="text-lg font-semibold">Swedish</h3>
-                    <p class="text-xl font-semibold">£22</p>
-                    </div>
-                    <p class="text-slate-700/70 text-base">Some information about the service</p>
-                </div>
-                <div
-                    class="grid grid-rows-1 p-5 bg-white rounded-xl gap-y-2 w-full border border-slate-500/50 hover:shadow-[5px_5px_0_rgba(0,0,0,0.5)] transition-shadow duration-150 ease-linear cursor-pointer">
-                    <div class="flex flex-col gap-y-2.5">
-                    <h3 class="text-lg font-semibold">Aromatherapy Back</h3>
-                    <p class="text-xl font-semibold">£30</p>
-                    </div>
-                    <p class="text-slate-700/70 text-base">Some information about the service</p>
-                </div>
-                <div
-                    class="grid grid-rows-1 p-5 bg-white rounded-xl gap-y-2 w-full border border-slate-500/50 hover:shadow-[5px_5px_0_rgba(0,0,0,0.5)] transition-shadow duration-150 ease-linear cursor-pointer">
-                    <div class="flex flex-col gap-y-2.5">
-                    <h3 class="text-lg font-semibold">Back, Neck and Shoulder</h3>
-                    <p class="text-xl font-semibold">£22</p>
-                    </div>
-                    <p class="text-slate-700/70 text-base">Some information about the service</p>
-                </div>
+                <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    { Service.map((serviceItem) => (
+                        serviceItem.type === "Massages" ? (
+                            <div key={serviceItem._id}
+                            className="grid grid-rows-1 p-5 bg-white rounded-xl gap-y-2 w-full border border-slate-500/50 ">
+                                <div className="flex flex-col gap-y-2.5">
+                                <h3 className="text-lg font-semibold">{serviceItem.name}</h3>
+                                <p className="text-xl font-semibold">£{serviceItem.price}</p>
+                                </div>
+                                <p className="text-slate-700/70 text-base">{serviceItem.description}</p>
+                            </div>
+                        ) : ("")
+                    ))}
                 </div>
             </div>
-            </section>
+
+            
+            <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
+                <div className="flex flex-col gap-y-3">
+                    <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Microdermabrasion</h2>
+                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+                </div>
+                <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    { Service.map((serviceItem) => (
+                        serviceItem.type === "Microdermabrasion" ? (
+                            <div key={serviceItem._id}
+                            className="grid grid-rows-1 p-5 bg-white rounded-xl gap-y-2 w-full border border-slate-500/50 ">
+                                <div className="flex flex-col gap-y-2.5">
+                                <h3 className="text-lg font-semibold">{serviceItem.name}</h3>
+                                <p className="text-xl font-semibold">£{serviceItem.price}</p>
+                                </div>
+                                <p className="text-slate-700/70 text-base">{serviceItem.description}</p>
+                            </div>
+                        ) : ("")
+                    ))}
+                </div>
+            </div>
+
+            
+            <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
+                <div className="flex flex-col gap-y-3">
+                    <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Waxing Treatments</h2>
+                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+                </div>
+                <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    { Service.map((serviceItem) => (
+                        serviceItem.type === "Waxing" ? (
+                            <div key={serviceItem._id}
+                            className="grid grid-rows-1 p-5 bg-white rounded-xl gap-y-2 w-full border border-slate-500/50 ">
+                                <div className="flex flex-col gap-y-2.5">
+                                <h3 className="text-lg font-semibold">{serviceItem.name}</h3>
+                                <p className="text-xl font-semibold">£{serviceItem.price}</p>
+                                </div>
+                                <p className="text-slate-700/70 text-base">{serviceItem.description}</p>
+                            </div>
+                        ) : ("")
+                    ))}
+                </div>
+            </div>
+
+            <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
+                <div className="flex flex-col gap-y-3">
+                    <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Facials</h2>
+                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+                </div>
+                <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    { Service.map((serviceItem) => (
+                        serviceItem.type === "Facials" ? (
+                            <div key={serviceItem._id}
+                            className="grid grid-rows-1 p-5 bg-white rounded-xl gap-y-2 w-full border border-slate-500/50 ">
+                                <div className="flex flex-col gap-y-2.5">
+                                <h3 className="text-lg font-semibold">{serviceItem.name}</h3>
+                                <p className="text-xl font-semibold">£{serviceItem.price}</p>
+                                </div>
+                                <p className="text-slate-700/70 text-base">{serviceItem.description}</p>
+                            </div>
+                        ) : ("")
+                    ))}
+                </div>
+            </div>
+            
+            <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
+                <div className="flex flex-col gap-y-3">
+                    <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Lashes Treatments</h2>
+                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+                </div>
+                <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    { Service.map((serviceItem) => (
+                        serviceItem.type === "Lashes" ? (
+                            <div key={serviceItem._id}
+                            className="grid grid-rows-1 p-5 bg-white rounded-xl gap-y-2 w-full border border-slate-500/50 ">
+                                <div className="flex flex-col gap-y-2.5">
+                                <h3 className="text-lg font-semibold">{serviceItem.name}</h3>
+                                <p className="text-xl font-semibold">£{serviceItem.price}</p>
+                                </div>
+                                <p className="text-slate-700/70 text-base">{serviceItem.description}</p>
+                            </div>
+                        ) : ("")
+                    ))}
+                </div>
+            </div>
+
+            <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
+                <div className="flex flex-col gap-y-3">
+                    <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Hair</h2>
+                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+                </div>
+                <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    { Service.map((serviceItem) => (
+                        serviceItem.type === "Hair" ? (
+                            <div key={serviceItem._id}
+                            className="grid grid-rows-1 p-5 bg-white rounded-xl gap-y-2 w-full border border-slate-500/50 ">
+                                <div className="flex flex-col gap-y-2.5">
+                                <h3 className="text-lg font-semibold">{serviceItem.name}</h3>
+                                <p className="text-xl font-semibold">£{serviceItem.price}</p>
+                                </div>
+                                <p className="text-slate-700/70 text-base">{serviceItem.description}</p>
+                            </div>
+                        ) : ("")
+                    ))}
+                </div>
+            </div>
+
+            <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
+                <div className="flex flex-col gap-y-3">
+                    <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Brows</h2>
+                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+                </div>
+                <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    { Service.map((serviceItem) => (
+                        serviceItem.type === "Brows" ? (
+                            <div key={serviceItem._id}
+                            className="grid grid-rows-1 p-5 bg-white rounded-xl gap-y-2 w-full border border-slate-500/50 ">
+                                <div className="flex flex-col gap-y-2.5">
+                                <h3 className="text-lg font-semibold">{serviceItem.name}</h3>
+                                <p className="text-xl font-semibold">£{serviceItem.price}</p>
+                                </div>
+                                <p className="text-slate-700/70 text-base">{serviceItem.description}</p>
+                            </div>
+                        ) : ("")
+                    ))}
+                </div>
+            </div>
+        </section>
     )
 }
+
+export default ServicesPage

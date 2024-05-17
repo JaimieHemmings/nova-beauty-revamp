@@ -1,4 +1,5 @@
 import AboutSection from "@/components/AboutSection"
+import CTA from "@/components/CTA"
 import Hero from "@/components/Hero"
 import Testimonials from "@/components/Testimonials"
 
@@ -16,6 +17,7 @@ export default function AboutPage() {
       text1="My goal is to provide exceptional beauty and therapy services that not only enhance your appearance but also promote overall well-being. With years of experience and a passion for excellence, I am committed to delivering personalized care in a serene and welcoming environment."
       text2="My goal is to provide exceptional beauty and therapy services that not only enhance your appearance but also promote overall well-being. With years of experience and a passion for excellence, I am committed to delivering personalized care in a serene and welcoming environment."
     />
+    <CTA />
     <Testimonials />
     </>
   )
