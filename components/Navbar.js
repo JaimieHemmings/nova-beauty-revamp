@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import defaultProfileImage from '../assets/profile.png'
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 import { FaGoogle } from 'react-icons/fa'
+import { redirect } from "next/navigation";
 
 export default function Navbar() {
 
@@ -30,6 +31,8 @@ export default function Navbar() {
     
         setAuthProviders();
       }, []);
+
+
 
     return (
     <nav className="bg-dark sticky top-0 z-50 shadow-2xl">
@@ -76,7 +79,7 @@ export default function Navbar() {
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     {session && (
                         <>
-                        <Link href="#" type="button" className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <Link href="/profile/messages" type="button" className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="absolute -inset-1.5"></span>
                             <span className="sr-only">View notifications</span>
                             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -105,9 +108,9 @@ export default function Navbar() {
                                 aria-orientation="vertical"
                                 aria-labelledby="user-menu-button"
                                 tabindex="-1">
-                                    <Link onClick={ToggleMenuProfile} href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Admin</Link>
+                                    <Link onClick={ToggleMenuProfile} href="/admin" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Admin</Link>
                                     <Link onClick={ToggleMenuProfile} href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Profile</Link>
-                                    <button onClick={() =>{ToggleMenuProfile;signOut()}} href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</button>
+                                    <button onClick={() =>{ToggleMenuProfile;signOut({ callbackUrl: '/', redirect:true })}} href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</button>
                                 </div>
                             )}
                         </div>
