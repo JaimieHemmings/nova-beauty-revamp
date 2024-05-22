@@ -14,6 +14,7 @@ export default function Testimonials () {
                         src={profileImg}
                         width={0}
                         height={0}
+                        alt="User profile Image"
                     />
                     <h2>Jodie</h2>
                 </div>
@@ -25,6 +26,7 @@ export default function Testimonials () {
                         src={profileImg}
                         width={0}
                         height={0}
+                        alt="User profile Image"
                     />
                     <h2>Ariella</h2>
                 </div>
@@ -36,6 +38,7 @@ export default function Testimonials () {
                         src={profileImg}
                         width={0}
                         height={0}
+                        alt="User profile Image"
                     />
                     <h2>Danni</h2>
                 </div>
@@ -49,6 +52,7 @@ export default function Testimonials () {
                         src={profileImg}
                         width={0}
                         height={0}
+                        alt="User profile Image"
                     />
                     <h2>Jaimie</h2>
                 </div>
@@ -60,6 +64,7 @@ export default function Testimonials () {
                         src={profileImg}
                         width={0}
                         height={0}
+                        alt="User profile Image"
                     />
                     <h2>Jo</h2>
                 </div>
@@ -71,6 +76,7 @@ export default function Testimonials () {
                         src={profileImg}
                         width={0}
                         height={0}
+                        alt="User profile Image"
                     />
                     <h2>Georgia</h2>
                 </div>
@@ -84,6 +90,7 @@ export default function Testimonials () {
                         src={profileImg}
                         width={0}
                         height={0}
+                        alt="User profile Image"
                     />
                     <h2>Jennifer</h2>
                 </div>
@@ -95,6 +102,7 @@ export default function Testimonials () {
                         src={profileImg}
                         width={0}
                         height={0}
+                        alt="User profile Image"
                     />
                     <h2>Senna</h2>
                 </div>
@@ -106,6 +114,7 @@ export default function Testimonials () {
                         src={profileImg}
                         width={0}
                         height={0}
+                        alt="User profile Image"
                     />
                     <h2>Janine</h2>
                 </div>
@@ -119,6 +128,7 @@ export default function Testimonials () {
                         src={profileImg}
                         width={0}
                         height={0}
+                        alt="User profile Image"
                     />
                     <h2>Catriona</h2>
                 </div>
@@ -130,6 +140,7 @@ export default function Testimonials () {
                         src={profileImg}
                         width={0}
                         height={0}
+                        alt="User profile Image"
                     />
                     <h2>Kirstie</h2>
                 </div>
@@ -141,6 +152,7 @@ export default function Testimonials () {
                         src={profileImg}
                         width={0}
                         height={0}
+                        alt="User profile Image"
                     />
                     <h2>Sofy</h2>
                 </div>

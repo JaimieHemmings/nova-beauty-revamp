@@ -3,7 +3,6 @@ import { FaPaperPlane } from 'react-icons/fa';
 import { useSession } from 'next-auth/react';
 import addMessage from '@/app/actions/addMessage';
 import { useFormStatus, useFormState } from 'react-dom';
-import { useEffect } from 'react';
 
 function SubmitMessageButton() {
   const status = useFormStatus()
