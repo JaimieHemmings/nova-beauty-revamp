@@ -146,3 +146,9 @@ body {
     font-size: 24px;
   }
 }
+
+@media screen and (max-width: 568px) {
+  .container {
+    max-width: 85%;
+  }
+}
