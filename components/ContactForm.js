@@ -32,7 +32,6 @@ export default function ContactForm() {
             </div>
 
             <div className="mx-auto md:w-2/3 lg:w-1/2">
-              {submitState.submitted? (
               <form action={formAction} className="-m-2 flex flex-wrap">
                   <div className="w-1/2 p-2">
                     <div className="relative">
@@ -83,10 +82,6 @@ export default function ContactForm() {
                     </span>
                   </div>
                 </form>
-
-              ) : (
-                <p className='text-white text-center mb-4'>Your message has been sent successfully</p>
-              )}
               </div>
             </div>
           </section>
