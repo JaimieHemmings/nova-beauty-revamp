@@ -30,7 +30,7 @@ export default function Testimonials () {
                     />
                     <h2>Ariella</h2>
                 </div>
-                <p>Had an amazing massage this morning done by Kayleigh. Excellent treatment I will be back</p>
+                <p>Had an amazing massage this morning done by Rhi. Excellent treatment I will be back</p>
             </div>
             <div className="bg-white rounded py-2 px-2">
                 <div className={styles.testimonialHead}>

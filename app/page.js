@@ -4,34 +4,41 @@ import ServicesHome from "@/components/ServicesHome";
 import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
 import AboutSection from "@/components/AboutSection";
+import ConnectDB from "@/config/database";
+import Pages from "@/models/Pages";
 
 export const metadata = {
   title: "Nova Beauty | Home"
 };
 
-export default function Home() {
+export default async function Home() {
+  await ConnectDB();
+  const data = await Pages.findById("664ef019613f55c8e1cfa8f7").lean();
   return (
     <>
       <Hero
-        title="We invest in your potential"
-        text="Welcome to my sanctuary of holistic beauty and rejuvenation, where tranquility meets transformation. Nestled in the heart of serene Cornish surroundings, we invite you on a journey of self-discovery and revitalization. Using a variety of skills I blend ancient healing techniques with modern practices to provide a holistic approach to beauty and wellness."
+        title={data.property1}
+        text={data.property2}
       />
       <AboutSection
-        title="I am on a mission to make holistic"
-        span="beauty and wellness"
-        title2="treatments more accessible across Cornwall"
-        text1="My goal is to provide exceptional beauty and therapy services that not only enhance your appearance but also promote overall well-being. With years of experience and a passion for excellence, I am committed to delivering personalized care in a serene and welcoming environment."
-        text2="My goal is to provide exceptional beauty and therapy services that not only enhance your appearance but also promote overall well-being. With years of experience and a passion for excellence, I am committed to delivering personalized care in a serene and welcoming environment."
+        title={data.property3}
+        span={data.property4}
+        title2={data.property5}
+        text1={data.property6}
+        text2={data.property7}
       />
       <ServicesHome />
       <AboutSection
-        title="I am on a mission to make holistic"
-        span="beauty and wellness"
-        title2="treatments more accessible across Cornwall"
-        text1="My goal is to provide exceptional beauty and therapy services that not only enhance your appearance but also promote overall well-being. With years of experience and a passion for excellence, I am committed to delivering personalized care in a serene and welcoming environment."
-        text2="My goal is to provide exceptional beauty and therapy services that not only enhance your appearance but also promote overall well-being. With years of experience and a passion for excellence, I am committed to delivering personalized care in a serene and welcoming environment."
+        title={data.property8}
+        span={data.property9}
+        title2={data.property10}
+        text1={data.property11}
+        text2={data.property12}
       />
-      <CTA />
+      <CTA
+      title={data.property13}
+      text1={data.property14}
+      />
       <ContactForm />
       <Testimonials />
     </>

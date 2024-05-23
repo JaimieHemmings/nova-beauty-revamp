@@ -2,9 +2,9 @@ import EditPageForm from '@/components/EditPageForm';
 import ConnectDB from '@/config/database';
 import Pages from '@/models/Pages';
 
-const ServicesEditPage = async () => {
+const ContactEditPage = async () => {
     await ConnectDB();
-    const pageData = await Pages.findById("664ef043613f55c8e1cfa8fd").lean();
+    const pageData = await Pages.findById("664ef051613f55c8e1cfa900").lean();
 
     return (
         <section className="container m-auto max-w-2xl py-24">
@@ -16,4 +16,4 @@ const ServicesEditPage = async () => {
 }
     
 
-export default ServicesEditPage
+export default ContactEditPage

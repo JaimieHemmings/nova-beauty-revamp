@@ -2,40 +2,53 @@ import {Schema, model, models} from 'mongoose'
 
 const PagesSchema = new Schema({
     PageTitle: {
+        type: String,
+        required: true,
+    },
+    property1: {
         type: String
     },
-    BannerTitle: {
+    property2: {
         type: String
     },
-    BannerMessage: {
+    property3 : {
         type: String
     },
-    IntroTitleStart : {
+    property4 : {
         type: String
     },
-    IntroTitleHighlight : {
+    property5 : {
         type: String
     },
-    IntroTitleEnd : {
+    property6: {
         type: String
     },
-    IntroMessage: {
+    property7 : {
         type: String
     },
-    MainBodyTitleStart : {
+    property8 : {
         type: String
     },
-    MainBodyTitleHighlight : {
+    property9: {
         type: String
     },
-    MainBodyTitleEnd: {
+    property10: {
         type: String
     },
-    MainBodyMessage: {
+    property11: {
+        type: String
+    },
+    property12: {
+        type: String
+    },
+    property13: {
+        type: String
+    },
+    property14: {
         type: String
     },
 })
 
-const Pages = models.PagesSchema || model('Pages', PagesSchema)
+const Pages = models.Pages || model('Pages', PagesSchema)
 
 export default Pages

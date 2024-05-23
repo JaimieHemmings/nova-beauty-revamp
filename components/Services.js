@@ -1,7 +1,7 @@
 import ConnectDB from "@/config/database"
 import ServicesList from "@/models/Services"
 
-const ServicesPage = async () => {
+const ServicesPage = async ({data}) => {
     await ConnectDB();
     const Service = await ServicesList.find({}).lean();
     return (
@@ -9,7 +9,7 @@ const ServicesPage = async () => {
             <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
                 <div className="flex flex-col gap-y-3">
                     <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Nail Treatments</h2>
-                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+                    <p className="md:max-w-lg text-white">{data.property3}</p>
                 </div>
                 <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     { Service.map((serviceItem) => (
@@ -30,7 +30,7 @@ const ServicesPage = async () => {
             <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
                 <div className="flex flex-col gap-y-3">
                     <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Massage Treatments</h2>
-                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+                    <p className="md:max-w-lg text-white">{data.property4}</p>
                 </div>
                 <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     { Service.map((serviceItem) => (
@@ -52,7 +52,7 @@ const ServicesPage = async () => {
             <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
                 <div className="flex flex-col gap-y-3">
                     <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Microdermabrasion</h2>
-                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+                    <p className="md:max-w-lg text-white">{data.property5}</p>
                 </div>
                 <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     { Service.map((serviceItem) => (
@@ -74,7 +74,7 @@ const ServicesPage = async () => {
             <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
                 <div className="flex flex-col gap-y-3">
                     <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Waxing Treatments</h2>
-                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+                    <p className="md:max-w-lg text-white">{data.property6}</p>
                 </div>
                 <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     { Service.map((serviceItem) => (
@@ -95,7 +95,7 @@ const ServicesPage = async () => {
             <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
                 <div className="flex flex-col gap-y-3">
                     <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Facials</h2>
-                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+                    <p className="md:max-w-lg text-white">{data.property7}</p>
                 </div>
                 <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     { Service.map((serviceItem) => (
@@ -116,7 +116,7 @@ const ServicesPage = async () => {
             <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
                 <div className="flex flex-col gap-y-3">
                     <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Lashes Treatments</h2>
-                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+                    <p className="md:max-w-lg text-white">{data.property8}</p>
                 </div>
                 <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     { Service.map((serviceItem) => (
@@ -137,7 +137,7 @@ const ServicesPage = async () => {
             <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
                 <div className="flex flex-col gap-y-3">
                     <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Hair</h2>
-                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+                    <p className="md:max-w-lg text-white">{data.property9}</p>
                 </div>
                 <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     { Service.map((serviceItem) => (
@@ -158,7 +158,7 @@ const ServicesPage = async () => {
             <div className="max-w-5xl px-7 lg:px-10 py-14 mx-auto">
                 <div className="flex flex-col gap-y-3">
                     <h2 className="text-3xl md:text-3xl lg:text-4xl md:max-w-lg font-bold text-white">Brows</h2>
-                    <p className="md:max-w-lg text-white">At our sanctuary of beauty, we offer an array of treatments designed to elevate your manicure experience to new heights. Whether you're in need of infills to maintain your stunning acrylics, a flawless gel polish that lasts, or a classic manicure for a touch of elegance, we have you covered.</p>
+                    <p className="md:max-w-lg text-white">{data.property10}</p>
                 </div>
                 <div className="w-full pt-10 lg:w-full relative isolate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     { Service.map((serviceItem) => (

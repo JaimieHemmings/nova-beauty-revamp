@@ -1,13 +1,13 @@
 'use server';
-import Page from '@/models/Pages';
+
 import ConnectDB from '@/config/database'
+import Pages from '@/models/Pages'
 import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
 
-async function updatePage(pageId, formData) {
-  await ConnectDB();
+async function addPage(previousState, formData) {
+  await ConnectDB()
 
-  const pageData ={
+  const newPage = new Pages({
     PageTitle: formData.get('PageTitle'),
     property1: formData.get('property1'),
     property2: formData.get('property2'),
@@ -19,22 +19,14 @@ async function updatePage(pageId, formData) {
     property8: formData.get('property8'),
     property9: formData.get('property9'),
     property10: formData.get('property10'),
-    property11: formData.get('property11'),
-    property12: formData.get('property12'),
-    property13: formData.get('property13'),
-    property14: formData.get('property14'),
-  };
+  })
 
-
-  const updatedPage = await Page.findByIdAndUpdate(
-    pageId,
-    pageData
-  );
+  await newPage.save()
 
   // revalidate cache
-  revalidatePath('/', 'layout');
+  revalidatePath('/', 'layout')
 
-  redirect('/');
+  return { submitted: true }
 }
 
-export default updatePage
+export default addPage

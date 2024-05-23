@@ -1,14 +1,18 @@
 import Services from "@/components/Services"
 import Hero from "@/components/Hero"
+import ConnectDB from "@/config/database";
+import Pages from "@/models/Pages";
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  await ConnectDB();
+  const data = await Pages.findById("664ef043613f55c8e1cfa8fd").lean();
   return (
     <>
     <Hero
-      title="We invest in your potential"
-      text="Welcome to my sanctuary of holistic beauty and rejuvenation, where tranquility meets transformation. Nestled in the heart of serene Cornish surroundings, we invite you on a journey of self-discovery and revitalization. Using a variety of skills I blend ancient healing techniques with modern practices to provide a holistic approach to beauty and wellness."
+      title={data.property1}
+      text={data.property2}
     />
-    <Services />
+    <Services data={data} />
     </>
   )
 }
