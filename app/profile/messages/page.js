@@ -14,7 +14,7 @@ const MessagesPage = async () => {
     if(sessionUser.user.isAdmin) {
         const readMessages = await Message.find({read: true})
             .sort({ createdAt: -1})
-            .populate('sender', 'username')
+            .populate('name')
             .lean();
     
         const unreadMessages = await Message.find({ read: false})
@@ -28,20 +28,19 @@ const MessagesPage = async () => {
     }
     
     return (
-        <section className='container mx-auto'>
-            <div className='container m-auto py-24 max-w-6xl'>
-                <div className='bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0'>
-                    <h1 className='text-3xl font-bold mb-4'>Your Messages</h1>
+        <section className='container mx-auto py-24 max-w-6xl'>
+            <div className='text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 p-5'>
+                
+                <h1 className='text-3xl font-bold mb-4 text-white'>Your Messages</h1>
 
-                    <div className='space-y-4'>
-                        {messages.length === 0 ? (
-                        <p>You have no messages</p>
-                        ) : (
-                        messages.map((message) => (
-                            <MessageCard key={message._id} message={message} />
-                        ))
-                        )}
-                    </div>
+                <div className='space-y-4'>
+                    {messages.length === 0 ? (
+                    <p>You have no messages</p>
+                    ) : (
+                    messages.map((message) => (
+                        <MessageCard key={message._id} message={message} />
+                    ))
+                    )}
                 </div>
             </div>
             </section>
