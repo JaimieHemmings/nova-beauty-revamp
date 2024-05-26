@@ -3,6 +3,8 @@ import { FaPaperPlane } from 'react-icons/fa';
 import { useSession } from 'next-auth/react';
 import addMessage from '@/app/actions/addMessage';
 import { useFormStatus, useFormState } from 'react-dom';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 function SubmitMessageButton() {
   const status = useFormStatus()
@@ -22,6 +24,11 @@ export default function ContactForm() {
   const { data:session } = useSession();
   const [submitState, formAction] = useFormState(addMessage, {});
 
+  useEffect(() => {
+    if (submitState.error) toast.error(submitState.error);
+    if (submitState.submitted) toast.success('Message sent successfully');
+  }), [submitState];
+
     return (
         <section className="body-font relative">
           <div className="container mx-auto px-5 py-24">
@@ -36,7 +43,7 @@ export default function ContactForm() {
                   <div className="w-1/2 p-2">
                     <div className="relative">
                         <input type="text" id="name" name="name" className="peer w-full rounded border border-gray-700 bg-gray-800 bg-opacity-40 py-1 px-3 text-base leading-8 text-gray-100 placeholder-transparent outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900" placeholder="Name" />
-                        <label for="name" className="absolute left-3 -top-6 text-sm leading-7 transition-all peer-placeholder-shown:left-3 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-white peer-focus:left-3 peer-focus:-top-6 peer-focus:text-sm">Name</label>
+                        <label for="name" className="absolute left-3 -top-6 text-sm leading-7 transition-all peer-placeholder-shown:left-3 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-white peer-focus:left-3 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-white">Name</label>
                     </div>
                   </div>
                   <div className="w-1/2 p-2">

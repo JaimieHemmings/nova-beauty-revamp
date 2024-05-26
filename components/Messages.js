@@ -3,7 +3,6 @@ import { useState } from 'react';
 import markMessageAsRead from '@/app/actions/markMessageAsRead';
 import deleteMessage from '@/app/actions/deleteMessage';
 import { useGlobalContext } from '@/context/GlobalContext';
-import { getDisplayName } from 'next/dist/shared/lib/utils';
 
 const MessageCard = ({ message }) => {
     const [isRead, setIsRead] = useState(message.read);

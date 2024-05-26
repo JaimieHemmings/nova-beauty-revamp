@@ -4,7 +4,7 @@ import styles from '../assets/styles/testimonials.module.css'
 
 export default function Testimonials () {
     return (
-        <div className="container mx-auto flex items-center justify-center pb-10">
+        <div className="container mx-auto flex items-center justify-center pb-10 pt-10">
             <div className="w-full px-5">
                 <div className="w-full max-w-6xl mx-auto">
                     <div className="text-center max-w-xl mx-auto">
